@@ -1,9 +1,10 @@
+import { useState } from "react";
+
+import data from "./data.json";
 import "./css/App.css";
 import Header from "./js/Header";
 import Form from "./js/Form";
 import ToDo from "./js/ToDo";
-import { useState } from "react";
-import data from "./data.json";
 
 function App() {
   const [toDos, setToDos] = useState(data); // Initiate using data from json file

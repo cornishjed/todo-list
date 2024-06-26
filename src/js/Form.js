@@ -5,6 +5,7 @@ let nextId = 4; // each item must have unique key value
 export default function Form({addToDo}) {
   const handleSubmit = (e, addToDo) => {
     e.preventDefault();
+    
     const toDo = {
       id: nextId++,
       title: e.target.title.value,

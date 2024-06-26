@@ -1,6 +1,6 @@
 import "../css/ToDo.css";
 
-export default function ToDo({title, children }) {
+export default function ToDo({title, children}) {
   return (
     <div className="toDo__card">
       <h1>{title}</h1>
