@@ -13,6 +13,10 @@ function App() {
     setToDos([...toDos, toDo]); // makes a copy of toDos, add a new item then stores the new array. Must be in square brackets
   };
 
+  const deleteToDo = (toDo) => {
+    // find toDo item in array and delete
+  }
+
   // creates array of toDo components
   const toDoItems = toDos.map((todo) => {
     return (
