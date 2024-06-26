@@ -5,4 +5,8 @@
     background-color: aliceblue;
     width: 282px;
     height: 182px;
+
+    &.complete {
+        background-color: greenyellow;
+    }
 }
