@@ -21,26 +21,26 @@ function App() {
       if (item.id == id) {
         toDosCpy.splice(i, 1);
       }
-    })
+    });
 
     setToDos(toDosCpy);
-  }
-
-  // creates array of toDo components
-  const toDoItems = toDos.map((todo) => {
-    return (
-      <ToDo key={todo.id} id={todo.id} deleteToDo={deleteToDo} title={todo.title}>
-        {todo.description}
-      </ToDo>
-    );
-  });
+  };
 
   return (
     <div className="app">
       <Header />
       <div className="content">
         <Form addToDo={addToDo} />
-        <div className="toDo__grid">{toDoItems}</div> /*React processes array of components in a block.*/
+        <div className="toDo__grid">
+          {toDos.map(({ id, title, description }) => {
+            return (
+              <ToDo key={id} id={id} deleteToDo={deleteToDo} title={title}>
+                {description}
+              </ToDo>
+            );
+          })}
+        </div>{" "}
+        /*React processes array of components in a block.*/
       </div>
     </div>
   );
