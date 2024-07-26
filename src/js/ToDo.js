@@ -5,34 +5,22 @@ import "../css/ToDo.css";
 export default function ToDo({ id, toDos, setToDos, title, children }) {
   const [isComplete, setComplete] = useState(false);
 
-  const handleDelete = (e) => {
-    e.preventDefault();
-
-    const id = e.target.id.value;
-
-    // find toDo item in array and delete
+  const handleDelete = (id) => {
     const toDosCpy = [...toDos];
+    const index = toDosCpy.findIndex((item) => item.id == id);
 
-    toDosCpy.map((item, i) => {
-      if (item.id == id) {
-        toDosCpy.splice(i, 1);
-      }
-    });
-
+    toDosCpy.splice(index, 1);
     setToDos(toDosCpy);
-
-    return;
   };
 
   return (
-    <div className={isComplete ? "toDo__card complete" : "toDo__card"}>
-      <form onSubmit={(e) => handleDelete(e)}>
-        <input type="hidden" name="id" value={id} />
-        <h1>{title}</h1>
-        <p>{children}</p>
-        <button>Delete</button>
-      </form>
-      <button onClick={isComplete ? () => setComplete(false) : () => setComplete(true)}>Mark {isComplete ? "Incomplete" : "Complete"}</button>
+    <div className={"toDo__card " + (isComplete && "complete")}>
+      <h1>{title}</h1>
+      <p>{children}</p>
+      <div className="toDo__card-buttons">
+        <button onClick={() => handleDelete(id)}>Delete</button>
+        <button onClick={() => setComplete(!isComplete)}>Mark {isComplete ? "Incomplete" : "Complete"}</button>
+      </div>
     </div>
   );
 }

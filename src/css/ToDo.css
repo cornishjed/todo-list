@@ -10,3 +10,9 @@
         background-color: greenyellow;
     }
 }
+
+.toDo__card-buttons {
+    display: flex;
+    width: fit-content;
+    gap: 1rem;;
+}
