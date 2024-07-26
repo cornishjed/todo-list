@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import data from "./data.json";
 import "./css/App.css";
+
+// components
 import Header from "./js/Header";
 import Form from "./js/Form";
 import Grid from "./js/Grid";
