@@ -2,9 +2,7 @@ import { useState } from "react";
 
 import "../css/Form.css";
 
-let nextId = 4; // each item must have unique key value
-
-export default function Form({ toDos, setToDos }) {
+export default function Form({ onSubmitToDo }) {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
 
@@ -16,16 +14,6 @@ export default function Form({ toDos, setToDos }) {
     setDescription(e.target.value);
   };
 
-  const handleSubmit = () => {
-    const toDo = {
-      id: nextId++,
-      title: title,
-      description: description,
-    };
-
-    setToDos([...toDos, toDo]);
-  };
-
   return (
     <div className="todo__form">
       <h3>Create To-Do</h3>
@@ -33,7 +21,7 @@ export default function Form({ toDos, setToDos }) {
       <input type="text" value={title} onChange={handleTitleChange} />
       <label htmlFor="desc">Description</label>
       <textarea value={description} onChange={handleDescriptionChange} />
-      <button onClick={handleSubmit}>Create</button>
+      <button onClick={() => onSubmitToDo(title, description)}>Create</button>
     </div>
   );
 }

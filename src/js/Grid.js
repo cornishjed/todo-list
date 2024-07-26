@@ -1,11 +1,11 @@
 import ToDo from "./ToDo";
 
-export default function Grid({toDos, setToDos}) {
+export default function Grid({toDos, onDeleteToDo}) {
   return (
     <div className="toDo__grid">
       {toDos.map(({ id, title, description }) => {
         return (
-          <ToDo key={id} id={id} toDos={toDos} setToDos={setToDos} title={title}>
+          <ToDo key={id} id={id} title={title} onDeleteToDo={onDeleteToDo} >
             {description}
           </ToDo>
         );
