@@ -1,27 +1,33 @@
 import { useState } from "react";
-
 import "../css/Form.css";
 
-export default function Form({ onSubmitToDo }) {
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
+let nextId = 4; // each item must have unique key value
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
+export default function Form({ toDos, setToDos }) {
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
 
-  const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
+  const handleSubmit = () => {
+     
+    const toDo = {
+      id: nextId++,
+      title: title,
+      description: desc
+    };
+
+    setToDos([...toDos, toDo]);
+
+    return;
   };
 
   return (
     <div className="todo__form">
       <h3>Create To-Do</h3>
       <label htmlFor="title">Title</label>
-      <input type="text" value={title} onChange={handleTitleChange} />
+      <input type="text" name="title" onChange={(e) => setTitle(e.target.value)} />
       <label htmlFor="desc">Description</label>
-      <textarea value={description} onChange={handleDescriptionChange} />
-      <button onClick={() => onSubmitToDo(title, description)}>Create</button>
+      <textarea name="desc" onChange={(e) => setDesc(e.target.value)}></textarea>
+      <button onClick={handleSubmit} disabled={!title}>Create</button>
     </div>
   );
 }
