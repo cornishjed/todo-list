@@ -8,11 +8,10 @@ export default function Form({ toDos, setToDos }) {
   const [desc, setDesc] = useState("");
 
   const handleSubmit = () => {
-     
     const toDo = {
       id: nextId++,
       title: title,
-      description: desc
+      description: desc,
     };
 
     setToDos([...toDos, toDo]);
@@ -24,10 +23,19 @@ export default function Form({ toDos, setToDos }) {
     <div className="todo__form">
       <h3>Create To-Do</h3>
       <label htmlFor="title">Title</label>
-      <input type="text" name="title" onChange={(e) => setTitle(e.target.value)} />
+      <input
+        type="text"
+        name="title"
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <label htmlFor="desc">Description</label>
-      <textarea name="desc" onChange={(e) => setDesc(e.target.value)}></textarea>
-      <button onClick={handleSubmit} disabled={!title}>Create</button>
+      <textarea
+        name="desc"
+        onChange={(e) => setDesc(e.target.value)}
+      ></textarea>
+      <button onClick={handleSubmit} disabled={!title}>
+        Create
+      </button>
     </div>
   );
 }
