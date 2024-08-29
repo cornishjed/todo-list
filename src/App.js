@@ -36,7 +36,7 @@ function App() {
     <div className="app">
       <Header />
       <div className="content">
-        <Form onSubmitToDo={handleSubmit} />
+        <Form submitToDo={handleSubmit} />
         <Grid toDos={toDos} onDeleteToDo={handleDelete} />
       </div>
     </div>
